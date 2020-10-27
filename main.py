@@ -6,6 +6,7 @@ reddit = praw.Reddit(client_id='*',
                      user_agent='*',
                     username='*',
                      password='*',)
+subreddit = reddit.subreddit('HairyAssGirls').new()
 
 def hasflair():
     while True:
