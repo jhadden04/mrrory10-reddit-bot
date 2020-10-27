@@ -6,7 +6,6 @@ reddit = praw.Reddit(client_id='*',
                      user_agent='*',
                     username='*',
                      password='*',)
-subreddit = reddit.subreddit('HairyAssGirls').new();
 def hasflair():
     while True:
         for sub in subreddit:
@@ -19,10 +18,15 @@ def hasflair():
                 reddit.redditor(str(poster)).message("Your post was removed from r/HairyAssGirls", "You Didn't have a flair")
                 time.sleep(30)
 
+def day():
+    while True:
+        time.sleep(24 * 60 * 60)
+        return True
 def postedtoday():
     postername = []
     while True:
         for sub in subreddit:
+            poster = sub.author
             if sub.link_flair_text == '❤️super hairy redditor❤':
                 print('❤️super hairy redditor❤')
 
@@ -35,11 +39,10 @@ def postedtoday():
             else:
                 postername.append(sub.author)
                 print("They have posted once")
-
-        time.sleep(24.0 * 60.0 * 60.0)  # 24 hours in seconds
-        postername = []
+        if day():
+            postername = []
+            print("it is a new day")
 
 
 hasflair()
 postedtoday()
-
