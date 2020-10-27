@@ -2,10 +2,11 @@ import praw
 import time
 
 reddit = praw.Reddit(client_id='*',
-                      client_secret='*',
+                     client_secret='*',
                      user_agent='*',
-                    username='*',
-                     password='*',)
+                     username='*',
+                     password='*', )
+
 subreddit = reddit.subreddit('HairyAssGirls').new()
 
 def hasflair():
@@ -13,32 +14,36 @@ def hasflair():
         for sub in subreddit:
             if sub.link_flair_text:
                 print(sub.link_flair_text)
-                
+
             else:
                 print("No flair")
-                sub.remove() # this should delete the post
+                sub.remove()  # this should delete the post
                 poster = sub.author
-                reddit.redditor(str(poster)).message("Your post was removed from r/HairyAssGirls", "You Didn't have a flair")
+                reddit.redditor(str(poster)).message("Your post was removed from r/HairyAssGirls",
+                                                     "You Didn't have a flair")
                 time.sleep(30)
 
 def day():
     while True:
         time.sleep(24 * 60 * 60)
         return True
-      
+
+
 def postedtoday():
     postername = []
     while True:
         for sub in subreddit:
             poster = sub.author
-            
+
             if sub.link_flair_text == '❤️super hairy redditor❤':
                 print('❤️super hairy redditor❤')
 
             elif sub.author in postername:
+                sub.remove()
                 print("they posted twice in a day")
-                sub.remove
-                reddit.redditor(str(poster)).message("Your post was removed from r/HairyAssGirls","You posted more than once a day, and don't have the \"❤️super hairy redditor❤\" flair")
+                reddit.redditor(str(poster)).message("Your post was removed from r/HairyAssGirls",
+                                                     "You posted more than once a day, and don't have the \"❤️super "
+                                                     "hairy redditor❤\" flair") 
                 time.sleep(10)
 
             else:
