@@ -6,11 +6,13 @@ reddit = praw.Reddit(client_id='*',
                      user_agent='*',
                     username='*',
                      password='*',)
+
 def hasflair():
     while True:
         for sub in subreddit:
             if sub.link_flair_text:
                 print(sub.link_flair_text)
+                
             else:
                 print("No flair")
                 sub.remove() # this should delete the post
@@ -22,11 +24,13 @@ def day():
     while True:
         time.sleep(24 * 60 * 60)
         return True
+      
 def postedtoday():
     postername = []
     while True:
         for sub in subreddit:
             poster = sub.author
+            
             if sub.link_flair_text == '❤️super hairy redditor❤':
                 print('❤️super hairy redditor❤')
 
